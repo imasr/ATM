@@ -1,0 +1,61 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col" colspan="1" *ngIf="showIndex"></th>
+        <ng-container *ngFor="let col of columns">
+          <th scope="col" colspan="1">
+            {{ col.displayName || col.field }}
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody *ngIf="data?.length; else noData">
+      <tr *ngFor="let row of data; let i = index">
+        <td *ngIf="showIndex">{{ i + 1 }}</td>
+        <td *ngFor="let col of columns; let j = index">
+          <ng-container *ngIf="col?.type == 'object'">
+            {{ row[col.field] | json }}
+          </ng-container>
+          <ng-container *ngIf="col?.type == 'date'">
+            {{ row[col.field] | date : "dd/MM/yyyy hh:mm a" }}
+          </ng-container>
+
+          <ng-container
+            *ngIf="
+              !col?.type || (col?.type !== 'object' && col?.type !== 'date')
+            "
+          >
+            <ng-container *ngIf="!col?.editable">
+              {{ row[col.field] }}
+            </ng-container>
+            <ng-container
+              *ngIf="allowEditing && col?.editable && row && col.field"
+            >
+              <input
+                [type]="col.type || 'text'"
+                [value]="row[col.field]"
+                (blur)="col?.onChangeEvent ? updateRow($event, row) : ''"
+              />
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="allowEditing">
+      <tr class="text-center">
+        <td colspan="12">
+          <button class="btn btn-success" (click)="updateTable(data)">
+            Update record
+          </button>
+          <button class="btn btn-primary mx-1" (click)="clear()">Clear</button>
+        </td>
+      </tr>
+    </tfoot>
+    <ng-template #noData>
+      <tr class="text-center">
+        <td colspan="12">{{ noDataText || "No data" }}</td>
+      </tr>
+    </ng-template>
+  </table>
+</div>

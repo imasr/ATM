@@ -1,0 +1,17 @@
+<div class="p-2">
+  <h3 class="text-center p-2">Enter Amount to Withdaw</h3>
+
+  <form
+    [formGroup]="amountForm"
+    (ngSubmit)="submit(amountForm)"
+    class="d-flex width-250"
+  >
+    <input
+      id="amount"
+      type="number"
+      placeholder="Enter Amount"
+      formControlName="amountToWithdraw"
+    />
+    <button type="submit" class="btn btn-primary ms-2">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <h1 class="navbar-brand m-0">{{ header }}</h1>
+    <div>
+      <ng-container *ngFor="let page of pages">
+        <span
+          class="text-white mx-2 p-2 pointer"
+          *ngIf="page"
+          (click)="gotoPage(page)"
+          >{{ page.label }}</span
+        >
+      </ng-container>
+    </div>
+  </div>
+</nav>

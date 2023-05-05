@@ -1,0 +1,9 @@
+<div class="d-flex flex-column p-2 width-800">
+  <h3 class="text-center p-2">Transaction History</h3>
+  <common-table
+    [columns]="historyColumn"
+    [data]="transactionHistory"
+    [noDataText]="'No History Available'"
+    [showIndex]="true"
+  ></common-table>
+</div>

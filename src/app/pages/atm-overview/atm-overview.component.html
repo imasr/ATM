@@ -1,0 +1,9 @@
+<div class="d-flex flex-column p-2 width-800">
+  <h3 class="text-center">Stock Available in ATM</h3>
+  <common-table
+    [columns]="stocksColumn"
+    [data]="stockData"
+    [noDataText]="'No Stock Available'"
+    [showIndex]="true"
+  ></common-table>
+</div>
