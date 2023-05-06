@@ -15,14 +15,14 @@ export class WithdrawComponent implements OnInit {
   amountForm = new FormGroup({
     amountToWithdraw: new FormControl(0, Validators.min(1)),
   });
+  transaction: any;
 
   constructor(
     private dataService: DataService,
     private store: Store<{ stockReducer: StateType }>
   ) {
-    this.store.select('stockReducer').subscribe((state) => {
-      console.log('withdrawstate', state);
-      this.amountForm.reset();
+    this.store.select('stockReducer').subscribe(({ history }: any) => {
+      this.transaction = history;
     });
   }
 
@@ -30,7 +30,6 @@ export class WithdrawComponent implements OnInit {
 
   submit(amountForm: FormGroup) {
     if (amountForm.valid && amountForm.value.amountToWithdraw) {
-      console.log(amountForm.value.amountToWithdraw);
       this.store.dispatch(withdawAmount(amountForm.value.amountToWithdraw));
     }
   }

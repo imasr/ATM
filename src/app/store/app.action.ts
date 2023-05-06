@@ -44,3 +44,8 @@ export const widthdrawSuccess = createAction(
   '[widthdrawSuccess Component] widthdrawSuccess',
   (state: StateType) => state
 );
+
+export const widthdrawError = createAction(
+  '[widthdrawError Component] widthdrawError',
+  (erorr: any) => erorr
+);

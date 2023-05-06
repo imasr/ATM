@@ -22,7 +22,6 @@ export class AtmOverviewComponent implements OnInit {
   constructor(private store: Store<{ stockReducer: StateType }>) {
     this.store.dispatch(getAvailableStock());
     this.store.select('stockReducer').subscribe(({ stock }) => {
-      console.log(stock);
       this.stockData = copyData(stock);
     });
   }

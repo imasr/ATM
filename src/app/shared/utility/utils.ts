@@ -12,3 +12,9 @@ export const resetForm = (form: FormGroup) => {
 export const copyData = (data: any) => {
   return JSON.parse(JSON.stringify(data));
 };
+
+export const storeToLocal = (data: any) => {
+  Object.keys(data).forEach((key: string) => {
+    localStorage.setItem(key, JSON.stringify(data[key]));
+  });
+};

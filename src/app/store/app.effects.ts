@@ -8,6 +8,7 @@ import {
   getTransactionHistory,
   historyListSuccess,
   reFillStock,
+  widthdrawError,
   widthdrawSuccess,
   withdawAmount,
 } from './app.action';
@@ -27,14 +28,11 @@ export class AppEffects {
     this.actions$.pipe(
       ofType(getAvailableStock),
       switchMap(() => {
-        return this.dataService.getData().pipe(
+        return this.dataService.getStockData().pipe(
           map((resp: Stock[]) => {
-            console.log('getStockList', resp);
             return availableListSuccess([...resp]);
           }),
           catchError((err) => {
-            console.log(err);
-
             return of(err);
           })
         );
@@ -46,13 +44,13 @@ export class AppEffects {
     this.actions$.pipe(
       ofType(reFillStock),
       switchMap(({ stock }) => {
-        return this.dataService.setData(stock).pipe(
+        return this.dataService.setStockData(stock).pipe(
           map((resp: Stock[]) => {
             this.alertService.showSuccess('Stock data is updated', 'Success');
             return availableListSuccess([...resp]);
           }),
           catchError((err) => {
-            this.alertService.showSuccess(err, 'Error');
+            this.alertService.showError(err, 'Error');
             return of(err);
           })
         );
@@ -66,11 +64,9 @@ export class AppEffects {
       switchMap(() => {
         return this.dataService.getTransactionData().pipe(
           map((resp: TransacHistory[]) => {
-            console.log('gettransaction', resp);
             return historyListSuccess([...resp]);
           }),
           catchError((err) => {
-            console.log(err);
             return of(err);
           })
         );
@@ -84,7 +80,6 @@ export class AppEffects {
       switchMap(({ amount }: any) => {
         return this.dataService.checkIfAmountAvailable(amount).pipe(
           map((resp: any) => {
-            console.log('withdrawAmount', resp);
             this.alertService.showSuccess(resp.msg, 'Success');
             return widthdrawSuccess({
               history: resp.history,
@@ -92,9 +87,8 @@ export class AppEffects {
             });
           }),
           catchError((err) => {
-            console.log(err);
-            this.alertService.showWarning(err.error, err.type);
-            return of(err);
+            this.alertService.showError(err.error, err.type);
+            return of(widthdrawError({}));
           })
         );
       })

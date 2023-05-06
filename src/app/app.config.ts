@@ -1,3 +1,5 @@
+import { Stock } from './store/app.reducer';
+
 export const pages = [
   {
     label: 'ATM Overview',
@@ -39,4 +41,12 @@ export const HistoryTableColumns = [
   { field: 'date', displayName: 'Date', type: 'date' },
   { field: 'amount', displayName: 'Currency' },
   { field: 'denomination', displayName: 'Denominations', type: 'object' },
+];
+
+export const stockData: Stock[] = [
+  { amount: 100, currency: '$', count: 10 },
+  { amount: 50, currency: '$', count: 10 },
+  { amount: 20, currency: '$', count: 10 },
+  { amount: 10, currency: '$', count: 10 },
+  { amount: 5, currency: '$', count: 10 },
 ];

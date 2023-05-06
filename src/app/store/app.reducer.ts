@@ -27,22 +27,23 @@ const initialState: StateType = {
 export const StockReducer = createReducer(
   initialState,
   on(StockActions.reFillStock, (state, payload) => {
-    console.log(state, payload);
-
     return { ...state };
   }),
   on(StockActions.withdawAmount, (state, payload) => {
-    console.log(state, payload);
-
     return { ...state };
   }),
   on(StockActions.getAvailableStock, (state) => {
     return { ...state };
   }),
-  on(StockActions.availableListSuccess, (state, payload) => ({
-    ...state,
-    ...payload,
-  })),
+  on(StockActions.availableListSuccess, (state, payload) => {
+    return { ...state, ...payload };
+  }),
+  on(StockActions.widthdrawSuccess, (state, payload) => {
+    return { ...state, ...payload };
+  }),
+  on(StockActions.widthdrawError, (state, payload) => {
+    return { ...state, ...payload };
+  }),
   on(StockActions.historyListSuccess, (state, payload) => {
     return { ...state };
   }),

@@ -27,7 +27,6 @@ export class TransactionsComponent implements OnInit {
     this.store.dispatch(getTransactionHistory());
 
     this.store.select('stockReducer').subscribe(({ history }) => {
-      console.log(history);
       this.transactionHistory = history;
     });
   }

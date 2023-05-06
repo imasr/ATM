@@ -14,4 +14,26 @@
     />
     <button type="submit" class="btn btn-primary ms-2">Submit</button>
   </form>
+
+  <div
+    *ngIf="transaction && transaction?.denomination"
+    class="text-center mt-3 d-flex width-500"
+  >
+    <table class="table-bordered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Denomination</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ transaction.date | date }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.denomination | json }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
