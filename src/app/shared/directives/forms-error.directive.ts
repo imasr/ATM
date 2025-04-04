@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { FormGroup, NgControl } from '@angular/forms';
+import { UntypedFormGroup, NgControl } from '@angular/forms';
 
 function getValidationMsg(
   validationId: string,
@@ -104,10 +104,10 @@ export class FormSubmitValidationDirective {
     this.markAsTouched(this.validationControl);
   }
 
-  private markAsTouched(formGroup: FormGroup): void {
+  private markAsTouched(formGroup: UntypedFormGroup): void {
     formGroup.markAsTouched();
     formGroup.updateValueAndValidity();
-    (<any>Object).values(formGroup.controls).forEach((control: FormGroup) => {
+    (<any>Object).values(formGroup.controls).forEach((control: UntypedFormGroup) => {
       control.markAsTouched();
       control.updateValueAndValidity({ onlySelf: false, emitEvent: true });
       if (control.controls) {
