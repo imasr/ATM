@@ -23,7 +23,7 @@
     "@ngrx/operators": "^19.1.0",
     "@ngrx/store": "^19.1.0",
     "@ngrx/store-devtools": "^19.1.0",
-    "ngx-toastr": "^18.0.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
