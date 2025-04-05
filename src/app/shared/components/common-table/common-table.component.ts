@@ -13,6 +13,7 @@ interface Column {
   selector: 'common-table',
   templateUrl: './common-table.component.html',
   styleUrls: ['./common-table.component.scss'],
+  standalone: false,
 })
 export class CommonTableComponent {
   @Input() columns: Column[] = [];
@@ -21,6 +22,7 @@ export class CommonTableComponent {
   @Input() allowEditing = false;
   @Input() showIndex = false;
   originalData: any[] = [];
+  updateButtonText = 'Update record';
   @Output() updatedRecord: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}

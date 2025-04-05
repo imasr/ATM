@@ -1,16 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { NavbarModule } from './shared/components/navbar/navbar.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, StoreModule.forRoot({}), NavbarModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -23,13 +21,6 @@ describe('AppComponent', () => {
   it(`should have as title 'beta-nxt-ATM'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('beta-nxt-ATM');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('beta-nxt-ATM app is running!');
+    expect(app.title).toEqual('ATM Machine');
   });
 });

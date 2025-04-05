@@ -6,9 +6,10 @@ import { pages } from './app.config';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  standalone: false,
 })
 export class AppComponent {
-  title = 'beta-nxt-ATM';
+  title = 'ATM Machine';
   page = pages;
   constructor(private router: Router) {}
 

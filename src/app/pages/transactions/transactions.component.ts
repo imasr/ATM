@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HistoryTableColumns } from 'src/app/app.config';
-import { copyData } from 'src/app/shared/utility/utils';
-import {
-  getAvailableStock,
-  getTransactionHistory,
-} from 'src/app/store/app.action';
+import { getTransactionHistory } from 'src/app/store/app.action';
 import { StateType, TransacHistory } from 'src/app/store/app.reducer';
 
 interface HistoryColumn {
@@ -17,6 +13,7 @@ interface HistoryColumn {
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss'],
+  standalone: false,
 })
 export class TransactionsComponent implements OnInit {
   historyColumn: HistoryColumn[] = HistoryTableColumns;

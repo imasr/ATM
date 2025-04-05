@@ -1,8 +1,14 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AtmOverviewComponent } from './atm-overview.component';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { CommonTableModule } from './../../shared/components/common-table/common-table.module';
 
 describe('AtmOverviewComponent', () => {
   let component: AtmOverviewComponent;
@@ -10,8 +16,16 @@ describe('AtmOverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [AtmOverviewComponent],
+      imports: [
+        RouterTestingModule,
+        StoreModule.forRoot({}),
+        CommonTableModule,
+      ],
+      providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   });
 
@@ -29,12 +43,8 @@ describe('AtmOverviewComponent', () => {
     const fixture = TestBed.createComponent(AtmOverviewComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toContain('Employee');
-  });
-  it(`should have as button 'Create'`, () => {
-    const fixture = TestBed.createComponent(AtmOverviewComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('button').textContent).toContain('Create');
+    expect(compiled.querySelector('h3').textContent).toContain(
+      'Stock Available in ATM'
+    );
   });
 });
