@@ -12,14 +12,13 @@ interface StockColumn {
 }
 
 @Component({
-    selector: 'restock',
-    templateUrl: './restock.component.html',
-    styleUrls: ['./restock.component.scss'],
-    standalone: false
+  selector: 'restock',
+  templateUrl: './restock.component.html',
+  styleUrls: ['./restock.component.scss'],
+  standalone: false,
 })
 export class ReStockComponent implements OnInit {
   stocksColumn: StockColumn[] = StockTableRefillColumns;
-
   stockData: Stock[] = [];
 
   constructor(private store: Store<{ stockReducer: StateType }>) {

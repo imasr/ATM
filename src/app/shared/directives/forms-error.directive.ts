@@ -30,8 +30,8 @@ const errorMessages: any = {
 };
 
 @Directive({
-    selector: '[formsError]',
-    standalone: false
+  selector: '[formsError]',
+  standalone: false,
 })
 export class FormsErrorDirective {
   constructor(private elRef: ElementRef, private control: NgControl) {}
@@ -95,8 +95,8 @@ export class FormsErrorDirective {
 }
 
 @Directive({
-    selector: '[validationControl]',
-    standalone: false
+  selector: '[validationControl]',
+  standalone: false,
 })
 export class FormSubmitValidationDirective {
   @Input() validationControl: any;
@@ -109,12 +109,14 @@ export class FormSubmitValidationDirective {
   private markAsTouched(formGroup: UntypedFormGroup): void {
     formGroup.markAsTouched();
     formGroup.updateValueAndValidity();
-    (<any>Object).values(formGroup.controls).forEach((control: UntypedFormGroup) => {
-      control.markAsTouched();
-      control.updateValueAndValidity({ onlySelf: false, emitEvent: true });
-      if (control.controls) {
-        this.markAsTouched(control);
-      }
-    });
+    (<any>Object)
+      .values(formGroup.controls)
+      .forEach((control: UntypedFormGroup) => {
+        control.markAsTouched();
+        control.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+        if (control.controls) {
+          this.markAsTouched(control);
+        }
+      });
   }
 }

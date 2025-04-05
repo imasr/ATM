@@ -26,7 +26,8 @@ import { AppEffects } from './store/app.effects';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
-    connectInZone: true}),
+      connectInZone: true,
+    }),
   ],
 
   bootstrap: [AppComponent],

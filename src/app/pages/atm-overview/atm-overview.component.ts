@@ -11,10 +11,10 @@ interface StockColumn {
 }
 
 @Component({
-    selector: 'atm-overview',
-    templateUrl: './atm-overview.component.html',
-    styleUrls: ['./atm-overview.component.scss'],
-    standalone: false
+  selector: 'atm-overview',
+  templateUrl: './atm-overview.component.html',
+  styleUrls: ['./atm-overview.component.scss'],
+  standalone: false,
 })
 export class AtmOverviewComponent implements OnInit {
   stocksColumn: StockColumn[] = StockTableColumns;

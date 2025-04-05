@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionsComponent } from './transactions.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule } from '@ngrx/store';
+import { CommonTableModule } from './../../shared/components/common-table/common-table.module';
 
 describe('TransactionsComponent', () => {
   let component: TransactionsComponent;
@@ -8,9 +11,13 @@ describe('TransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransactionsComponent ]
-    })
-    .compileComponents();
+      declarations: [TransactionsComponent],
+      imports: [
+        RouterTestingModule,
+        StoreModule.forRoot({}),
+        CommonTableModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
