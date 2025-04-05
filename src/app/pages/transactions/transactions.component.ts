@@ -14,9 +14,10 @@ interface HistoryColumn {
 }
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss'],
+    selector: 'app-transactions',
+    templateUrl: './transactions.component.html',
+    styleUrls: ['./transactions.component.scss'],
+    standalone: false
 })
 export class TransactionsComponent implements OnInit {
   historyColumn: HistoryColumn[] = HistoryTableColumns;

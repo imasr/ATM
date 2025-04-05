@@ -7,9 +7,10 @@ import { getAvailableStock, withdawAmount } from 'src/app/store/app.action';
 import { StateType } from 'src/app/store/app.reducer';
 
 @Component({
-  selector: 'app-withdraw',
-  templateUrl: './withdraw.component.html',
-  styleUrls: ['./withdraw.component.scss'],
+    selector: 'app-withdraw',
+    templateUrl: './withdraw.component.html',
+    styleUrls: ['./withdraw.component.scss'],
+    standalone: false
 })
 export class WithdrawComponent implements OnInit {
   amountForm = new UntypedFormGroup({

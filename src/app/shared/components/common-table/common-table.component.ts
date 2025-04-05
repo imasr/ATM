@@ -10,9 +10,10 @@ interface Column {
 }
 
 @Component({
-  selector: 'common-table',
-  templateUrl: './common-table.component.html',
-  styleUrls: ['./common-table.component.scss'],
+    selector: 'common-table',
+    templateUrl: './common-table.component.html',
+    styleUrls: ['./common-table.component.scss'],
+    standalone: false
 })
 export class CommonTableComponent {
   @Input() columns: Column[] = [];
